@@ -27,7 +27,11 @@ public class AssetBuildTool : MonoBehaviour {
         // 不支持加载压缩的AssetBundle
         //AssetBundle ab = AssetBundle.CreateFromFile(filepath);
         // 支持加载压缩的AssetBundle
+#if UNITY_5_3
+        AssetBundle ab = AssetBundle.LoadFromMemory(bytes);
+#else
         AssetBundle ab = AssetBundle.CreateFromMemoryImmediate(bytes);
+#endif
         string[] names = ab.GetAllAssetNames();
         print("names -----------");
         foreach(string name in names)
