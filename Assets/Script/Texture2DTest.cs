@@ -2,23 +2,26 @@
 using System.Collections;
 using System.IO;
 
-public class Texture2DTest : MonoBehaviour {
+public class Texture2DTest : MonoBehaviour
+{
 
     private Texture2D texture1 = null;
     private Texture2D texture2 = null;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         StartCoroutine(LoadImageInAssetBundle());
         //texture2 = LoadImage("cubeatlas.png");
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     IEnumerator LoadImageInAssetBundle()
     {
@@ -39,9 +42,7 @@ public class Texture2DTest : MonoBehaviour {
 
     Texture2D LoadImage(string name)
     {
-        FileStream fs = new FileStream(Application.dataPath + "/"+name, FileMode.Open);
-        byte[] buffer = null;
-        FileUtil.GetData(Application.dataPath + "/" + name, out buffer);
+        byte[] buffer = File.ReadAllBytes(Application.dataPath + "/" + name);
         print("size:" + buffer.Length);
         Texture2D texture = new Texture2D(2, 2, TextureFormat.Alpha8, false);
         texture.name = name;
@@ -49,24 +50,24 @@ public class Texture2DTest : MonoBehaviour {
         {
             print("load image success " + name);
             print("texture format:" + texture.format + "  " + texture.mipmapCount + "   " + texture.width + "   " + texture.height);
-            
+
         }
         return texture;
     }
 
     void OnEnable()
     {
-//         print("onEnabled");
-//         texture1 = LoadImage("cubeatlas.png");
-//         texture2 = LoadImage("256.png");
+        //         print("onEnabled");
+        //         texture1 = LoadImage("cubeatlas.png");
+        //         texture2 = LoadImage("256.png");
     }
 
     void OnDisable()
     {
-//         print("onDisable");
-//         GameObject.DestroyImmediate(texture1, true);
-//         GameObject.DestroyImmediate(texture2, true);
-//         texture1 = null;
-//         texture2 = null;
+        //         print("onDisable");
+        //         GameObject.DestroyImmediate(texture1, true);
+        //         GameObject.DestroyImmediate(texture2, true);
+        //         texture1 = null;
+        //         texture2 = null;
     }
 }

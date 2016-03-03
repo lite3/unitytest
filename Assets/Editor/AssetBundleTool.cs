@@ -23,8 +23,7 @@ public class AssetBuildTool : MonoBehaviour {
     static void LoadAssetBundle()
     {
         string filepath = Application.dataPath + "/AssetBundles/cubeatlas";
-        byte[] bytes = null;
-        FileUtil.GetData(filepath, out bytes);
+        byte[] bytes = File.ReadAllBytes(filepath);
         // 不支持加载压缩的AssetBundle
         //AssetBundle ab = AssetBundle.CreateFromFile(filepath);
         // 支持加载压缩的AssetBundle
@@ -46,8 +45,7 @@ public class AssetBuildTool : MonoBehaviour {
     {
         string filepath = Application.dataPath + "/Textures/cubeatlas.png";
 
-        byte[] bytes = null;
-        FileUtil.GetData(filepath, out bytes);
+        byte[] bytes = File.ReadAllBytes(filepath);
         print("size:" + bytes.Length);
         Texture2D texture = new Texture2D(2, 2, TextureFormat.Alpha8, false);
         if (texture.LoadImage(bytes))
