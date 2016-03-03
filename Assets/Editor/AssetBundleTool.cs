@@ -60,9 +60,10 @@ public class AssetBuildTool : MonoBehaviour {
     [MenuItem("AssetBundles/Get Asset Bundle names")]
     static void GetNames()
     {
+        print("AssetBundles/Get Asset Bundle names");
         var names = AssetDatabase.GetAllAssetBundleNames();
         foreach (var name in names)
-            Debug.Log("Asset Bundle: " + name);
+            print("Asset Bundle: " + name);
     }
 }
 
