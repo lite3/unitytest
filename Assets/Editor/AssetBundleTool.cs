@@ -9,7 +9,7 @@ public class AssetBuildTool : MonoBehaviour {
     static void CreateAssetBundles()
     {
         //string outputPath = Application.dataPath + "/AssetBundles";
-        string outputPath = "Assets/AssetBundles";
+        string outputPath = Application.streamingAssetsPath;
         AssetBundleBuild[] buildMap = new AssetBundleBuild[1];
 
         buildMap[0].assetBundleName = "cubeatlas";
@@ -22,7 +22,7 @@ public class AssetBuildTool : MonoBehaviour {
     [MenuItem("AssetBundles/LoadAssetBundle")]
     static void LoadAssetBundle()
     {
-        string filepath = Application.dataPath + "/AssetBundles/cubeatlas";
+        string filepath = Application.streamingAssetsPath + "/cubeatlas";
         byte[] bytes = File.ReadAllBytes(filepath);
         // 不支持加载压缩的AssetBundle
         //AssetBundle ab = AssetBundle.CreateFromFile(filepath);
