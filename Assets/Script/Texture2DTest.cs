@@ -25,7 +25,7 @@ public class Texture2DTest : MonoBehaviour
 
     IEnumerator LoadImageInAssetBundle()
     {
-        string filename = "file://" + Application.streamingAssetsPath + "/cubeatlas";
+        string filename = "file://" + PathUtil.streamingAssetsPath + "/cubeatlas";
         WWW www = new WWW(filename);
         yield return www;
         AssetBundle ab = www.assetBundle;
@@ -42,7 +42,7 @@ public class Texture2DTest : MonoBehaviour
 
     Texture2D LoadImage(string name)
     {
-        byte[] buffer = File.ReadAllBytes(Application.streamingAssetsPath + "/" + name);
+        byte[] buffer = File.ReadAllBytes(PathUtil.streamingAssetsPath + "/" + name);
         print("size:" + buffer.Length);
         Texture2D texture = new Texture2D(2, 2, TextureFormat.Alpha8, false);
         texture.name = name;

@@ -5,24 +5,31 @@ using UnityEditor;
 
 public class AssetBuildTool : MonoBehaviour {
     
+    
     [MenuItem("AssetBundles/Build Asset Bundles")]
     static void CreateAssetBundles()
     {
-        //string outputPath = Application.dataPath + "/AssetBundles";
-        string outputPath = Application.streamingAssetsPath;
         AssetBundleBuild[] buildMap = new AssetBundleBuild[1];
 
         buildMap[0].assetBundleName = "cubeatlas";
         string[] enemyAssets = new[] { "Assets/Textures/cubeatlas.png" };
         buildMap[0].assetNames = enemyAssets;
 
-        BuildPipeline.BuildAssetBundles(outputPath, buildMap, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows64);
+        Directory.CreateDirectory(PathUtil.windowsStreamingAssetsPath);
+        Directory.CreateDirectory(PathUtil.osxStreamingAssetsPath);
+        Directory.CreateDirectory(PathUtil.androidStreamingAssetsPath);
+        Directory.CreateDirectory(PathUtil.iosStreamingAssetsPath);
+
+        BuildPipeline.BuildAssetBundles(PathUtil.windowsStreamingAssetsPath, buildMap, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows);
+        BuildPipeline.BuildAssetBundles(PathUtil.osxStreamingAssetsPath, buildMap, BuildAssetBundleOptions.None, BuildTarget.StandaloneOSXUniversal);
+        BuildPipeline.BuildAssetBundles(PathUtil.androidStreamingAssetsPath, buildMap, BuildAssetBundleOptions.None, BuildTarget.Android);
+        BuildPipeline.BuildAssetBundles(PathUtil.iosStreamingAssetsPath, buildMap, BuildAssetBundleOptions.None, BuildTarget.iOS);
     }
 
     [MenuItem("AssetBundles/LoadAssetBundle")]
     static void LoadAssetBundle()
     {
-        string filepath = Application.streamingAssetsPath + "/cubeatlas";
+        string filepath = PathUtil.streamingAssetsPath + "/cubeatlas";
         byte[] bytes = File.ReadAllBytes(filepath);
         // 不支持加载压缩的AssetBundle
         //AssetBundle ab = AssetBundle.CreateFromFile(filepath);

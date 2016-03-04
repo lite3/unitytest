@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3773090424
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 18f0810bf10c54bad70363190befb38d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7c0a6a24fc909dd95208e56e2ca96f9c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Textures/cubeatlas.png
+Dependencies: []
