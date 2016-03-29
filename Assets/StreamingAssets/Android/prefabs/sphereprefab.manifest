@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 1664604242
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: eab957c6f0694e3fb7718af32ba711f9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: af72f19a6e11edc2c0e5a8958ebbdc4a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/SpherePrefab.prefab
+Dependencies:
+- F:/Github/unitytest/Assets/StreamingAssets/Android/materials/cubeatlas
