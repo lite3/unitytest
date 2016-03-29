@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 609589489
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 95de435e6488d3b0f5946b6b9682285e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 67e99222a1589ff9377ee6366f65dd7a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefab/CubePrefab.prefab
+Dependencies:
+- F:/Github/unitytest/Assets/StreamingAssets/Windows/materials/cubeatlas
