@@ -4,26 +4,57 @@ using System.IO;
 using UnityEditor;
 
 public class AssetBuildTool : MonoBehaviour {
-    
-    
-    [MenuItem("AssetBundles/Build Asset Bundles")]
+
+
+    [MenuItem("AssetBundles/Build All Asset Bundles")]
+    static void CreateAllAssetBundles()
+    {
+        string[] files =
+        {
+            "Materials/cubeatlas.mat",
+            "Prefab/CubePrefab.prefab",
+            "Prefab/SpherePrefab.prefab",
+        };
+        AssetBundleBuild[] builds = new AssetBundleBuild[files.Length];
+
+        for (int i = files.Length - 1; i >= 0; i--)
+        {
+            AssetBundleBuild build = new AssetBundleBuild();
+            build.assetBundleName = Path.GetDirectoryName(files[i]) + "/" + Path.GetFileNameWithoutExtension(files[i]);
+            build.assetNames = new string[] { "Assets/" + files[i] };
+            builds[i] = build;
+        }
+        
+        Directory.CreateDirectory(PathUtil.windowsStreamingAssetsPath);
+        Directory.CreateDirectory(PathUtil.osxStreamingAssetsPath);
+        Directory.CreateDirectory(PathUtil.androidStreamingAssetsPath);
+        Directory.CreateDirectory(PathUtil.iosStreamingAssetsPath);
+
+        BuildPipeline.BuildAssetBundles(PathUtil.windowsStreamingAssetsPath, builds, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows);
+        BuildPipeline.BuildAssetBundles(PathUtil.osxStreamingAssetsPath, builds, BuildAssetBundleOptions.None, BuildTarget.StandaloneOSXUniversal);
+        BuildPipeline.BuildAssetBundles(PathUtil.androidStreamingAssetsPath, builds, BuildAssetBundleOptions.None, BuildTarget.Android);
+        BuildPipeline.BuildAssetBundles(PathUtil.iosStreamingAssetsPath, builds, BuildAssetBundleOptions.None, BuildTarget.iOS);
+    }
+
+
+    [MenuItem("AssetBundles/Build Asset Bundles:cubeatlas.png")]
     static void CreateAssetBundles()
     {
-        AssetBundleBuild[] buildMap = new AssetBundleBuild[1];
+        AssetBundleBuild[] builds = new AssetBundleBuild[1];
 
-        buildMap[0].assetBundleName = "cubeatlas";
+        builds[0].assetBundleName = "cubeatlas";
         string[] enemyAssets = new[] { "Assets/Textures/cubeatlas.png" };
-        buildMap[0].assetNames = enemyAssets;
+        builds[0].assetNames = enemyAssets;
 
         Directory.CreateDirectory(PathUtil.windowsStreamingAssetsPath);
         Directory.CreateDirectory(PathUtil.osxStreamingAssetsPath);
         Directory.CreateDirectory(PathUtil.androidStreamingAssetsPath);
         Directory.CreateDirectory(PathUtil.iosStreamingAssetsPath);
 
-        BuildPipeline.BuildAssetBundles(PathUtil.windowsStreamingAssetsPath, buildMap, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows);
-        BuildPipeline.BuildAssetBundles(PathUtil.osxStreamingAssetsPath, buildMap, BuildAssetBundleOptions.None, BuildTarget.StandaloneOSXUniversal);
-        BuildPipeline.BuildAssetBundles(PathUtil.androidStreamingAssetsPath, buildMap, BuildAssetBundleOptions.None, BuildTarget.Android);
-        BuildPipeline.BuildAssetBundles(PathUtil.iosStreamingAssetsPath, buildMap, BuildAssetBundleOptions.None, BuildTarget.iOS);
+        BuildPipeline.BuildAssetBundles(PathUtil.windowsStreamingAssetsPath, builds, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows);
+        BuildPipeline.BuildAssetBundles(PathUtil.osxStreamingAssetsPath, builds, BuildAssetBundleOptions.None, BuildTarget.StandaloneOSXUniversal);
+        BuildPipeline.BuildAssetBundles(PathUtil.androidStreamingAssetsPath, builds, BuildAssetBundleOptions.None, BuildTarget.Android);
+        BuildPipeline.BuildAssetBundles(PathUtil.iosStreamingAssetsPath, builds, BuildAssetBundleOptions.None, BuildTarget.iOS);
     }
 
     [MenuItem("AssetBundles/LoadAssetBundle")]
