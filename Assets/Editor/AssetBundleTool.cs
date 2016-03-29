@@ -12,8 +12,8 @@ public class AssetBuildTool : MonoBehaviour {
         string[] files =
         {
             "Materials/cubeatlas.mat",
-            "Prefab/CubePrefab.prefab",
-            "Prefab/SpherePrefab.prefab",
+            "Prefabs/CubePrefab.prefab",
+            "Prefabs/SpherePrefab.prefab",
         };
         AssetBundleBuild[] builds = new AssetBundleBuild[files.Length];
 
