@@ -24,7 +24,7 @@ public class CaptureScreenshotTest : MonoBehaviour {
 
     public void loadImage()
     {
-        byte[] data = File.ReadAllBytes(filename);
+        byte[] data = File.ReadAllBytes(filepath);
         Texture2D texture = new Texture2D(1,1);
         texture.LoadImage(data);
         img.texture = texture;
