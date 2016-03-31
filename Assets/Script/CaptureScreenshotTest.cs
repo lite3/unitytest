@@ -14,7 +14,7 @@ public class CaptureScreenshotTest : MonoBehaviour {
         {
             img = GameObject.FindObjectOfType<RawImage>();
         }
-        filepath = Application.persistentDataPath + filename;
+        filepath = Application.persistentDataPath + "/" + filename;
 	}
 	
 	// Update is called once per frame
@@ -32,7 +32,8 @@ public class CaptureScreenshotTest : MonoBehaviour {
 
     public void captureImage()
     {
-        Application.CaptureScreenshot(filename);
+        string savepath = Application.isMobilePlatform ? filename : filepath;
+        Application.CaptureScreenshot(savepath);
         print(Application.persistentDataPath);
     }
 }
